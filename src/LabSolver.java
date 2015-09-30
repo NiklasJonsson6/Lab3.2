@@ -16,11 +16,18 @@ public class LabSolver {
             System.out.println(l);
         } else {
             System.out.println("Failed to find a solution. (Bug in LabSolver.java)");
-            System.out.println(l);
         }
     }
 
     public static boolean findPath(int x0, int y0, int x1, int y1, Labyrinth l) {
+        /*try {
+            Thread.sleep(1000);                 //1000 milliseconds is one second.
+        } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
+
+        System.out.println(l);*/
+
         if ((x0 == x1) && (y0 == y1)) {
             return true;
         }
