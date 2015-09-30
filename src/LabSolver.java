@@ -21,31 +21,38 @@ public class LabSolver {
     }
 
     public static boolean findPath(int x0, int y0, int x1, int y1, Labyrinth l) {
-        //...
         if ((x0 == x1) && (y0 == y1)) {
             return true;
         }
-        if (!l.getMark(x0, y0)) {
-            l.setMark(x0, y0, true);
-        }
 
         if (l.canMove(Labyrinth.Direction.RIGHT, x0, y0) && !l.getMark(x0+1, y0)) {
-            x0++;
-            findPath(x0, y0, x1, y1, l);
+            l.setMark(x0, y0, true);
+            if(findPath(x0 + 1, y0, x1, y1, l)) {
+                return true;
+            }
+            l.setMark(x0, y0, false);
         }
-         if (l.canMove(Labyrinth.Direction.DOWN, x0, y0) && !l.getMark(x0, y0+1)) {
-            y0++;
-            findPath(x0, y0, x1, y1, l);
+        if (l.canMove(Labyrinth.Direction.DOWN, x0, y0) && !l.getMark(x0, y0+1)) {
+            l.setMark(x0, y0, true);
+            if(findPath(x0, y0 + 1, x1, y1, l)) {
+                return true;
+            }
+            l.setMark(x0, y0, false);
         }
         if (l.canMove(Labyrinth.Direction.LEFT, x0, y0) && !l.getMark(x0-1, y0)) {
-            x0--;
-            findPath(x0, y0, x1, y1, l);
+            l.setMark(x0, y0, true);
+            if(findPath(x0 - 1, y0, x1, y1, l)) {
+                return true;
+            }
+            l.setMark(x0, y0, false);
         }
         if (l.canMove(Labyrinth.Direction.UP, x0, y0) && !l.getMark(x0, y0-1)) {
-            y0--;
-            findPath(x0, y0, x1, y1, l);
+            l.setMark(x0, y0, true);
+            if(findPath(x0, y0 - 1, x1, y1, l)) {
+                return true;
+            }
+            l.setMark(x0, y0, false);
         }
         return false;
     }
-
 }
