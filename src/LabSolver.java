@@ -29,7 +29,7 @@ public class LabSolver {
             Thread.currentThread().interrupt();
         }
 
-        System.out.println(l); */
+        System.out.println(l);*/
 
         if ((x0 == x1) && (y0 == y1)) {
             l.setMark(x0, y0, true);
@@ -41,29 +41,26 @@ public class LabSolver {
             if(findPath(x0 + 1, y0, x1, y1, l)) {
                 return true;
             }
-            l.setMark(x0, y0, false);
         }
         if (l.canMove(Labyrinth.Direction.DOWN, x0, y0) && !l.getMark(x0, y0+1)) {
             l.setMark(x0, y0, true);
             if(findPath(x0, y0 + 1, x1, y1, l)) {
                 return true;
             }
-            l.setMark(x0, y0, false);
         }
         if (l.canMove(Labyrinth.Direction.LEFT, x0, y0) && !l.getMark(x0-1, y0)) {
             l.setMark(x0, y0, true);
             if(findPath(x0 - 1, y0, x1, y1, l)) {
                 return true;
             }
-            l.setMark(x0, y0, false);
         }
         if (l.canMove(Labyrinth.Direction.UP, x0, y0) && !l.getMark(x0, y0-1)) {
             l.setMark(x0, y0, true);
             if(findPath(x0, y0 - 1, x1, y1, l)) {
                 return true;
             }
-            l.setMark(x0, y0, false);
         }
+        l.setMark(x0, y0, false);
         return false;
     }
 }
