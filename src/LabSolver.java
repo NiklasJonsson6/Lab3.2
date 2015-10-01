@@ -20,13 +20,13 @@ public class LabSolver {
     }
 
     public static boolean findPath(int x0, int y0, int x1, int y1, Labyrinth l) {
-        /*try {
-            Thread.sleep(1000);                 //1000 milliseconds is one second.
+        try {
+            Thread.sleep(300);
         } catch(InterruptedException ex) {
             Thread.currentThread().interrupt();
         }
 
-        System.out.println(l);*/
+        System.out.println(l);
 
         if ((x0 == x1) && (y0 == y1)) {
             return true;
