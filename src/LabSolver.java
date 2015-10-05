@@ -23,7 +23,7 @@ public class LabSolver {
     }
 
     public static boolean findPath(int x0, int y0, int x1, int y1, Labyrinth l) {
-        /*try { //Om man vill se steg för steg hur rekursionen fungerar
+        /*try { //if you want to see the recursion step-by-step
             Thread.sleep(300);
         } catch(InterruptedException ex) {
             Thread.currentThread().interrupt();
@@ -31,16 +31,16 @@ public class LabSolver {
 
         System.out.println(l);*/
 
-        if ((x0 == x1) && (y0 == y1)) {
+        if ((x0 == x1) && (y0 == y1)) { //if correct path is found, set final mark and return true
             l.setMark(x0, y0, true);
             return true;
         }
 
-        if (l.canMove(Labyrinth.Direction.RIGHT, x0, y0) && !l.getMark(x0+1, y0)) {
-            l.setMark(x0, y0, true);
-            if(findPath(x0 + 1, y0, x1, y1, l)) {
-                return true;
-            }
+        if (l.canMove(Labyrinth.Direction.RIGHT, x0, y0) && !l.getMark(x0+1, y0)) { //if no wall or mark is in the way
+            l.setMark(x0, y0, true); //set mark on current position
+            if(findPath(x0 + 1, y0, x1, y1, l)) { //try to continue from the next position
+                return true; //if the correct path was eventually found, return true
+            } //else don't return anything and try going down instead...
         }
         if (l.canMove(Labyrinth.Direction.DOWN, x0, y0) && !l.getMark(x0, y0+1)) {
             l.setMark(x0, y0, true);
@@ -60,7 +60,7 @@ public class LabSolver {
                 return true;
             }
         }
-        l.setMark(x0, y0, false);
-        return false;
+        l.setMark(x0, y0, false); //if all ways are blocked, remove current position mark and return false (move back
+        return false;             //in the recursion) until another alternative is possible
     }
 }
