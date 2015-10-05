@@ -9,7 +9,7 @@ public class LabSolver {
         }
         Labyrinth l = new Lab(width,height);
         System.out.println("\nCreated a random labyrinth:");
-        //System.out.println(l);
+        System.out.println(l);
         long startTime = System.currentTimeMillis();
         boolean success = findPath(0,0,width-1,height-1,l);
         long elapseTime = System.currentTimeMillis() - startTime;
@@ -23,7 +23,7 @@ public class LabSolver {
     }
 
     public static boolean findPath(int x0, int y0, int x1, int y1, Labyrinth l) {
-        /*try {
+        /*try { //Om man vill se steg för steg hur rekursionen fungerar
             Thread.sleep(300);
         } catch(InterruptedException ex) {
             Thread.currentThread().interrupt();
