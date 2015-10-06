@@ -1,3 +1,14 @@
 //Niklas Jonsson
 //Simon Moos
 //Grupp 13
+
+Först testade vi att på något sätt skapa rekursion genom att returnera findPath med
+nya kordinater. Detta skapade dock problem då vår lösning fastnade i en oändlig
+up/down eller right/left när den kom fram till en återvändsgränd. Detta hände för att
+ett nytt alternativ testades efter att den förra marken togs bort och därav hoppade
+programmet tillbaks till samma återvändsgränd.
+
+Till slut löste vi i stället problemet genom att använda findPath som villkor i en
+if-sats. Rekursionen fortsätter tills x1, y1 hittas och i så fall returneras true hela
+vägen tillbaks. Om man kommer till en återvändsgränd returneras false tills ett nytt
+alternativ är möjligt och rekursionen fortsätter.

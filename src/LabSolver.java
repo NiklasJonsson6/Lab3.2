@@ -10,10 +10,7 @@ public class LabSolver {
         Labyrinth l = new Lab(width,height);
         System.out.println("\nCreated a random labyrinth:");
         System.out.println(l);
-        long startTime = System.currentTimeMillis();
         boolean success = findPath(0,0,width-1,height-1,l);
-        long elapseTime = System.currentTimeMillis() - startTime;
-        System.out.println(elapseTime);
         if (success) {
             System.out.println("Solution found:");
             System.out.println(l);
@@ -29,7 +26,7 @@ public class LabSolver {
             Thread.currentThread().interrupt();
         }
 
-        System.out.println(l);*/
+        System.out.println(l); */
 
         if ((x0 == x1) && (y0 == y1)) { //if correct path is found, set final mark and return true
             l.setMark(x0, y0, true);
