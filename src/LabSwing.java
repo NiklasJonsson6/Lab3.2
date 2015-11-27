@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.Random;
 
 public class LabSwing implements Labyrinth {
@@ -8,6 +9,7 @@ public class LabSwing implements Labyrinth {
     private boolean[][] wallRight;
     private boolean[][] wallBelow;
     private int[][] annotations;
+    private LabTile[][] tiles;
 
     private final int NONE = 0;
     private final int LEFT = 1;
@@ -27,6 +29,7 @@ public class LabSwing implements Labyrinth {
         wallRight = new boolean[width][height];
         wallBelow = new boolean[width][height];
         annotations = new int[width][height];
+        tiles = new LabTile[width][height];
         for (int x=0;x<width;x++) {
             for (int y=0;y<height;y++) {
                 wallRight[x][y] = false;
@@ -34,6 +37,15 @@ public class LabSwing implements Labyrinth {
                 annotations[x][y] = NONE;
             }
         }
+
+        //swing
+        for (int y = 0; y < width; y++) {
+            for (int x = 0; x < height; x++) {
+                tiles[x][y] = new LabTile();
+                f.add(tiles[x][y]);
+            }
+        }
+
         placeAllArrow();
     }
 
@@ -52,6 +64,15 @@ public class LabSwing implements Labyrinth {
         } else {
             annotations[x][y] = NONE;
         }
+
+        //Swing
+        if (b) {
+            tiles[x][y].setMark(true);
+        } else {
+            tiles[x][y].setMark(false);
+        }
+        f.revalidate();
+        f.repaint();
     }
 
     public boolean getMark(int x,int y) {
@@ -86,8 +107,10 @@ public class LabSwing implements Labyrinth {
             for (int x=0;x<width;x++) {
                 if (canMove(Labyrinth.Direction.UP,x,y)) {
                     str = str + "+  ";
+                    //tiles[x][y].setEdge(1);
                 } else {
                     str = str + "+--";
+                    tiles[x][y].setTopEdge(true);
                 }
             }
             str = str + "+\n";
@@ -96,6 +119,7 @@ public class LabSwing implements Labyrinth {
                     str = str + " ";
                 } else {
                     str = str + "|";
+                    tiles[x][y].setSideEdge(true);
                 }
                 if (annotations[x][y] == RIGHT) {
                     str = str + "->";

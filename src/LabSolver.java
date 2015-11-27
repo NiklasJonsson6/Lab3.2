@@ -4,13 +4,13 @@ import javax.swing.*;
 public class LabSolver {
 
     public static void main(String[] args) {
-        int width = 20;
+        int width = 10;
         int height = 10;
         if (args.length > 1) {
             width = Integer.parseInt(args[0]);
             height = Integer.parseInt(args[1]);
         }
-        Labyrinth l = new Lab(width,height);
+        Labyrinth l = new LabSwing(width,height);
         System.out.println("\nCreated a random labyrinth:");
         System.out.println(l);
         boolean success = findPath(0,0,width-1,height-1,l);
@@ -23,13 +23,13 @@ public class LabSolver {
     }
 
     public static boolean findPath(int x0, int y0, int x1, int y1, Labyrinth l) {
-        /*try { //if you want to see the recursion step-by-step
+        try { //if you want to see the recursion step-by-step
             Thread.sleep(300);
         } catch(InterruptedException ex) {
             Thread.currentThread().interrupt();
         }
 
-        System.out.println(l); */
+        //System.out.println(l);
 
         if ((x0 == x1) && (y0 == y1)) { //if correct path is found, set final mark and return true
             l.setMark(x0, y0, true);
