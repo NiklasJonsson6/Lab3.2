@@ -2,7 +2,7 @@ public class LabSolver {
 
     public static void main(String[] args) {
         int width = 10;
-        int height = 10;
+        int height = 50;
         if (args.length > 1) {
             width = Integer.parseInt(args[0]);
             height = Integer.parseInt(args[1]);
