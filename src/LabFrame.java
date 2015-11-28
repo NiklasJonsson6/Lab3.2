@@ -7,6 +7,7 @@ public class LabFrame extends JPanel {
         setLayout(new GridLayout(width, height));
         f.setSize(100*width, 100*height);
         f.setVisible(true);
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.add(this);
     }
 }
